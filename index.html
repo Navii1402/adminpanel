@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- TAILWIND CSS -->
+    <link href="assets/css/tailwind.css" rel="stylesheet">
+    <!-- ALPINE JS -->
+    <script src="assets/js/alpine.js" defer></script>
+
+    <title>Better Code</title>
+</head>
+<body class="antialiased bg-gray-100">
+    <div class="flex relative" x-data="{navOpen: false}">
+        <!-- NAV -->
+        <nav class="absolute md:relative w-64 transform -translate-x-full md:translate-x-0 h-screen overflow-y-scroll bg-black transition-all duration-300" :class="{'-translate-x-full': !navOpen}">
+            <div class="flex flex-col justify-between h-full">
+                <div class="p-4">
+                    <!-- LOGO -->
+                    <a class="flex items-center text-white space-x-4" href="">
+                        <svg class="w-7 h-7 bg-indigo-600 rounded-lg p-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                        <span class="text-2xl font-bold">Admin Panel</span>
+                    </a>
+                    <!-- LOGIN -->
+                    <div class="mt-4">
+                    <a href="#" class="text-gray-500 hover:text-white">Login</a>
+                    </div>
+
+                    <!-- SEARCH BAR -->
+                    <div class="border-gray-700 py-5 text-white border-b rounded">
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 flex items-center pl-2">
+                                <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                            </div>
+                            <form action="" method="GET">
+                                <input type="search" class="w-full py-2 rounded pl-10 bg-gray-800 border-none focus:outline-none focus:ring-0" placeholder="Search">
+                            </form>
+                        </div>
+                        <!-- SEARCH RESULT -->
+                    </div>
+
+                    <!-- NAV LINKS -->
+                    <div class="py-4 text-gray-400 space-y-1">
+                        <!-- BASIC LINK -->
+                        <a href="#" class="block py-2.5 px-4 flex items-center space-x-2 bg-gray-800 text-white hover:bg-gray-800 hover:text-white rounded">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                            <span>Categories</span>
+                        </a>
+                        <!-- DROPDOWN LINK -->
+                        <div class="block" x-data="{open: false}">
+                            <div @click="open = !open" class="flex items-center justify-between hover:bg-gray-800 hover:text-white cursor-pointer py-2.5 px-4 rounded">
+                                <div class="flex items-center space-x-2">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+                                    <span>Content</span>
+                                </div>
+                                <svg x-show="open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
+                                <svg x-show="!open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>    
+                            </div>
+                           <!-- HTML -->
+<div x-show="open" class="text-sm border-l-2 border-gray-800 mx-6 my-2.5 px-2.5 flex flex-col gap-y-1">
+    <a href="#" class="block py-2 px-4 hover:bg-gray-800 hover:text-white rounded" onclick="showContent()">Setting</a>
+
+
+    <a href="#" class="block py-2 px-4 hover:bg-gray-800 hover:text-white rounded ml-4" onclick="showContent('frames')">Frames</a>
+    <a href="#" class="block py-2 px-4 hover:bg-gray-800 hover:text-white rounded ml-4" onclick="showContent('kids')">Kids</a>
+    <a href="#" class="block py-2 px-4 hover:bg-gray-800 hover:text-white rounded ml-4" onclick="showContent('birthday')">Birthday</a>
+    <a href="#" class="block py-2 px-4 hover:bg-gray-800 hover:text-white rounded ml-4" onclick="showContent('devotional')">Devotional</a>
+</div>
+
+<div id="main-content">
+    <!-- Main page content goes here -->
+
+</div>
+
+<script>
+    function showContent(Frames) {
+        // You can replace the following with the logic to load content based on the category
+        document.getElementById('main-content').innerHTML = 'Showing ' + frames + ' content';
+    }
+</script>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROFILE -->
+                <div class="text-gray-200 border-gray-800 rounded flex items-center justify-between p-2">
+                    <div class="flex items-center space-x-2">
+                        <!-- AVATAR IMAGE BY FIRST LETTER OF NAME -->
+                        <img src="https://ui-avatars.com/api/?name=Habib+Mhamadi&size=128&background=ff4433&color=fff" class="w-7 w-7 rounded-full" alt="Profile">
+                        <h1>Naveen Raja</h1>
+                    </div>
+                    <a onclick="event.preventDefault(); document.getElementById('logoutForm').submit()" href="#" class="hover:bg-gray-800 hover:text-white p-2 rounded">
+                        <form id="logoutForm" action="" method="POST"></form>
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>            
+                        </form>
+                    </a>
+                </div>
+
+            </div>
+        </nav>
+        <!-- END OF NAV -->
+
+        <!-- PAGE CONTENT -->
+        <main class="flex-1 h-screen overflow-y-scroll overflow-x-hidden">
+            <div class="md:hidden justify-between items-center bg-black text-white flex">
+                <h1 class="text-2xl font-bold px-4">Admin Panel</h1>
+                <button @click="navOpen = !navOpen" class="btn p-4 focus:outline-none hover:bg-gray-800">
+                    <svg class="w-6 h-6 fill-current" fill= "none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+            <section class="max-w-7xl mx-auto py-4 px-5">
+                <div class="flex justify-between items-center border-b border-gray-300">
+                    <h1 class="text-2xl font-semibold pt-2 pb-6">Categories</h1>
+                </div>
+                <script>
+                    function showContent(Frames) {
+                        // You can replace the following with the logic to load content based on the category
+                        document.getElementById('main-content').innerHTML = 'Showing ' + frames + ' content';
+                    }
+                </script>
+
+
+                <!-- STATISTICS -->
+                <!DOCTYPE html>
+                <html lang="en">
+                
+                <head>
+                  <meta charset="UTF-8">
+                  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                  <title>Image Upload with Preview</title>
+                  <style>
+                    body {
+                      font-family: 'Arial', sans-serif;
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                      height: 100vh;
+                      margin: 0;t
+                      background-color: #f4f4f4;
+                      flex-wrap: wrap;
+                    }
+                
+                    .theme-container {
+                      margin: 20px;
+                      text-align: center;
+                      background-color: #fff;
+                      padding: 20px;
+                      border-radius: 8px;
+                      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                      flex: 0 0 calc(33.33% - 40px);
+                      transition: transform 0.3s ease;
+                    }
+                
+                    .theme-container:hover {
+                      transform: scale(1.05);
+                    }
+                
+                    h2 {
+                      font-size: 24px;
+                      color: #000000;
+                      margin-bottom: 20px;
+                      text-transform: uppercase;
+                      letter-spacing: 2px;
+                      font-weight: bold;
+                    }
+                
+                    #imageInput {
+                      display: none;
+                    }
+                
+                    .upload-button {
+                      cursor: pointer;
+                      background-color: #0026ff;
+                      color: #ffffff;
+                      padding: 10px 20px;
+                      border-radius: 5px;
+                      transition: background-color 0.3s ease;
+                    }
+                
+                    .upload-button:hover {
+                      background-color: #01497c;
+                    }
+                
+                    .image-preview {
+                      margin-top: 20px;
+                      padding: 20px;
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                      flex-direction: column;
+                      border-radius: 8px;
+                      overflow: hidden;
+                      position: relative;
+                    }
+                
+                    #preview {
+                      width: 100%;
+                      height: 100%;
+                      object-fit: cover;
+                      border-radius: 8px;
+                      transition: transform 0.3s ease;
+                    }
+                
+                    .image-preview:hover #preview {
+                      transform: scale(1.1);
+                    }
+                
+                    #imageDescription {
+                      width: 100%;
+                      margin-top: 10px;
+                      padding: 15px;
+                      border: 2px solid #aae0ba;
+                      border-radius: 8px;
+                      box-sizing: border-box;
+                      transition: border-color 0.3s ease;
+                    }
+                
+                    #imageDescription:focus {
+                      border-color: #d47a7a;
+                    }
+                
+                    .submit-button {
+                      background-color: #5b11d1;
+                      color: #fff;
+                      padding: 10px 20px;
+                      border-radius: 5px;
+                      margin-top: 15px;
+                      cursor: pointer;
+                      transition: background-color 0.3s ease;
+                    }
+                
+                    .submit-button:hover {
+                      background-color: #badbf1;
+                    }
+                  </style>
+                </head> 
+                
+                <body>
+                  <!-- Kids Theme -->
+                  <div class="theme-container" style="background-color: #fddcdb;">
+                    <h2>Kids Theme</h2>
+                    <input type="file" id="imageInput" accept="image/*" onchange="previewImage(event)">
+                    <label for="imageInput" class="upload-button">Choose Image</label>
+                    <div class="image-preview">
+                      <img id="preview" src="#" alt="Image Preview">
+                      <textarea id="imageDescription" placeholder="Enter cute and playful image description"></textarea>
+                    </div>
+                    <button class="submit-button" onclick="siubmitForm('Kids Theme')">Submit</button>
+                  </div>
+                
+                  <!-- Birthday Theme -->
+                  <div class="theme-container" style="background-color: #b6a85c;">
+                    <h2>Birthday Theme</h2>
+                    <input type="file" id="imageInput" accept="image/*" onchange="previewImage(event)">
+                    <label for="imageInput" class="upload-button">Choose Image</label>
+                    <div class="image-preview">
+                      <img id="preview" src="#" alt="Image Preview">
+                      <textarea id="imageDescription" placeholder="Enter joyful birthday celebration description"></textarea>
+                    </div>
+                    <button class="submit-button" onclick="submitForm('Birthday Theme')">Submit</button>
+                  </div>
+                   
+                  <!-- Motivational Theme -->
+                  <div class="theme-container" style="background-color: #a5d3a5;">
+                    <h2>Motivational Theme</h2>
+                    <input type="file" id="imageInput" accept="image/*" onchange="previewImage(event)">
+                    <label for="imageInput" class="upload-button">Choose Image</label>
+                    <div class="image-preview">
+                      <img id="preview" src="#" alt="Image Preview">
+                      <textarea id="imageDescription" placeholder="Enter inspiring and uplifting description"></textarea>
+                    </div>
+                    <button class="submit-button" onclick="submitForm('Motivational Theme')">Submit</button>
+                  </div>
+                
+                  <!-- Frames Theme -->
+                  
+                     
+                  <div class="theme-container" style="background-color: #d89f9f;">
+                    <h2>Frames Theme</h2>
+                    <input type="file" id="imageInput" accept="image/*" onchange="previewImage(event)">
+                    <label for="imageInput" class="upload-button">Choose Image</label>
+                    <div class="image-preview">
+                      <img id="preview" src="#" alt="Image Preview">
+                      <textarea id="imageDescription" placeholder="Enter elegant and decorative frame description"></textarea>
+                    </div>
+                    <button class="submit-button" onclick="submitForm('Frames Theme')">Submit</button>
+                  </div>
+                  
+                 
+                  <script>
+                    function previewImage(event) {
+  var input = event.target;
+  var preview = document.getElementById('preview');
+
+  var reader = new FileReader();
+  reader.onload = function () {
+    preview.src = reader.result;
+  };
+
+  reader.readAsDataURL(input.files[0]);
+}
+
+                
+                    function submitForm(theme) {
+                      var description = document.querySelector('#imageDescription').value;
+                      alert(`Submitted ${theme} theme with description: ${description}`);
+                      // You can add further logic or send data to the server
+                    }
+                  </script>
+                </body>
+                
+                </html>
+                
+
+                
+                
+                            
+                
+                
+
+                <!-- END OF STATISTICS -->
+                
+                <!-- TABLE -->
+       
+                <!-- END OF TABLE -->
+
+                
+            </section>
+            <!-- END OF PAGE CONTENT -->
+        </main>
+    </div>
+</body>
+</html>
